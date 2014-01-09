@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-GraciCms::Application.config.secret_key_base = '995ddf1667f6426431a92111b36f8e5a8623d3987273fa7497695a6ef69c2e0b5b7b95ca376a2fc8908ba804023a621c4fc7dc73d82e64ea3cc3e81ddda19349'
+GraciCms::Application.config.secret_key_base = ENV["SECRET_TOKEN"]
