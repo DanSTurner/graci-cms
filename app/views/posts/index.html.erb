@@ -4,8 +4,10 @@
 <ul class="posts">
   <% @posts.each do |post| %>
     <li>
-      <%= post.title %>
-      <%= post.content %>
+      <h3>
+        <%= link_to post.title, post_path(post) %>
+      </h3>
+      <%= post.content %><br>
       <%= link_to "edit", edit_post_path(post) %> |
       <%= link_to "delete", post, method: :delete, data: { confirm: "Are you sure?" } %>
     </li>
