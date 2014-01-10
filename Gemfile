@@ -12,6 +12,8 @@ gem 'figaro', '~> 0.7.0'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.14.1'
+  gem 'guard-rspec', '4.2.4'
+  gem 'growl', '1.0.3'
 end
 
 group :test do
