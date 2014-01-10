@@ -14,6 +14,7 @@ group :development, :test do
   gem 'rspec-rails', '2.14.1'
   gem 'guard-rspec', '4.2.4'
   gem 'growl', '1.0.3'
+  gem 'factory_girl_rails', '~> 4.3.0'
 end
 
 group :test do
