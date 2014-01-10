@@ -61,6 +61,8 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     formatador (0.2.4)
+    friendly_id (5.0.2)
+      activerecord (~> 4.0.0)
     growl (1.0.3)
     guard (2.2.5)
       formatador (>= 0.2.4)
@@ -188,6 +190,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   factory_girl_rails (~> 4.3.0)
   figaro (~> 0.7.0)
+  friendly_id (~> 5.0.2)
   growl (= 1.0.3)
   guard-rspec (= 4.2.4)
   jquery-rails

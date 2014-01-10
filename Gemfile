@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'figaro', '~> 0.7.0'
+gem 'friendly_id', '~> 5.0.2'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
