@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_micropost, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :content)
     end
 
-    def set_micropost
+    def set_post
       @post = Post.friendly.find(params[:id])
     end
 end
