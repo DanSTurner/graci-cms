@@ -10,4 +10,9 @@ describe "Comment" do
 
   it { should respond_to(:content) }
   it { should respond_to(:post_id) }
+
+  describe "when content is blank" do
+    before { @comment.content = " " }
+    it { should_not be_valid }
+  end
 end

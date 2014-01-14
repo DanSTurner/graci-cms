@@ -1,6 +1,7 @@
 GraciCms::Application.routes.draw do
-  resources :posts
-  resources :comments
+  resources :posts do
+    resources :comments
+  end
 
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.

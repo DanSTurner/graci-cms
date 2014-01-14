@@ -13,7 +13,6 @@ describe "Post Pages" do
           fill_in 'post_title', with: "title"
           fill_in 'post_content', with: "lorem ipsum"
           click_button "Create Post"
-          visit root_path
         end
 
         it { should have_content("title") }
@@ -30,6 +29,32 @@ describe "Post Pages" do
             end
             it { should have_content("updated content")}
           end
+        end
+
+        describe "then commenting" do
+          before { click_link "title" }
+
+          describe "with valid text" do
+            before { fill_in "Content", with: "new comment" }
+            it "should increase comment count" do
+              expect { click_button "Submit comment" }.to change(Comment, :count).by(1)
+            end
+          end
+          describe "with empty text" do
+            before { fill_in "Content", with: " " }
+            it "should not increase comment count" do
+              expect { click_button "Submit comment" }.not_to change(Comment, :count).by(1)
+            end
+          end
+        end
+
+        describe "after commenting" do
+          before do
+            click_link "title"
+            fill_in "Content", with: "new comment"
+            click_button "Submit comment"
+          end
+          it { should have_content("new comment ") }
         end
       end
 
