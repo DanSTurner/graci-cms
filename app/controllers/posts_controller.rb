@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = @post.comments.build
-    @comments = @post.comments
+    @comments = @post.comments(true)
   end
 
   def update

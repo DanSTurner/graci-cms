@@ -12,7 +12,7 @@ describe "Post Pages" do
           visit new_post_path
           fill_in 'post_title', with: "title"
           fill_in 'post_content', with: "lorem ipsum"
-          click_button "Create Post"
+          click_button "Submit"
         end
 
         it { should have_content("title") }
@@ -25,7 +25,7 @@ describe "Post Pages" do
           describe "then updating" do
             before do
               fill_in "Content", with: "updated content"
-              click_button "Save changes"
+              click_button "Submit"
             end
             it { should have_content("updated content")}
           end
@@ -66,7 +66,7 @@ describe "Post Pages" do
           end
 
           it "should not create a post" do
-            expect { click_button "Create Post" }.not_to change(Post, :count)
+            expect { click_button "Submit" }.not_to change(Post, :count)
           end
         end
 
@@ -74,14 +74,14 @@ describe "Post Pages" do
           before do
             fill_in 'post_title', with: "same title"
             fill_in 'post_content', with: "valid"
-            click_button 'Create Post'
+            click_button 'Submit'
             visit new_post_path
             fill_in 'post_title', with: "same title"
             fill_in 'post_content', with: "valid"
           end
 
           it "should not create a post" do
-            expect { click_button "Create Post" }.not_to change(Post, :count)
+            expect { click_button "Submit" }.not_to change(Post, :count)
           end
         end
       end
@@ -92,7 +92,7 @@ describe "Post Pages" do
         end
 
         it "should not create a post" do
-          expect { click_button "Create Post" }.not_to change(Post, :count)
+          expect { click_button "Submit" }.not_to change(Post, :count)
         end
       end
     end
