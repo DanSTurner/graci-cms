@@ -39,6 +39,13 @@ describe "Post Pages" do
             it "should increase comment count" do
               expect { click_button "Submit comment" }.to change(Comment, :count).by(1)
             end
+
+            describe "then deleting" do
+              before { click_button "Submit comment" }
+              it "should remove the comment" do
+                expect { click_link "delete" }.to change(Comment, :count).by(-1)
+              end
+            end
           end
           describe "with empty text" do
             before { fill_in "Content", with: " " }

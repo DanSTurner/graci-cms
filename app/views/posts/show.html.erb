@@ -16,9 +16,10 @@
 <h3>Comments</h3>
 
 <ul class="list-group">
-  <% @comments.each do |c| %>
+  <% @comments.each do |comment| %>
     <li class="list-group-item">
-      <%= c.content %>
+      <%= comment.content %>
+      <%= link_to "delete", [@post, comment], method: :delete, data: { confirm: "Are you sure?" } %>
     </li>
   <% end %>
 </ul>
