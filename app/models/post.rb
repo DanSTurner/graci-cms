@@ -5,4 +5,7 @@ class Post < ActiveRecord::Base
 
   extend ::FriendlyId
   friendly_id :title, use: :slugged
+
+  include RankedModel
+  ranks :nav_order
 end

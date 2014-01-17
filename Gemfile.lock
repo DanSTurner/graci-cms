@@ -78,6 +78,8 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.1.1)
+      railties (>= 3.1.0)
     json (1.8.1)
     listen (2.4.0)
       celluloid (>= 0.15.2)
@@ -117,6 +119,8 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.1)
+    ranked-model (0.3)
+      activerecord (>= 3.1.12)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
@@ -194,8 +198,10 @@ DEPENDENCIES
   growl (= 1.0.3)
   guard-rspec (= 4.2.4)
   jquery-rails
+  jquery-ui-rails (~> 4.1.1)
   pg (= 0.17.1)
   rails (= 4.0.2)
+  ranked-model (~> 0.3)
   rspec-rails (= 2.14.1)
   sass-rails (~> 4.0.0)
   sdoc

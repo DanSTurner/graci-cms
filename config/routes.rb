@@ -1,5 +1,6 @@
 GraciCms::Application.routes.draw do
   resources :posts do
+    post :sort, on: :collection
     resources :comments
   end
 

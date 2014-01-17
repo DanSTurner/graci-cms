@@ -1,8 +1,16 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :sort]
+
+  def sort
+    @post.update_attribute :nav_order_position, params[:post][:nav_order_position]
+    @post.save
+
+    render nothing: true
+  end
 
   def index
     @posts = Post.all
+    @nav_items = Post.rank(:nav_order).all
   end
 
   def new
@@ -33,9 +41,11 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+
+
   private
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :nav_order)
     end
 
     def set_post
