@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @nav_items = Post.rank(:nav_order).all
+    # @nav_items = Post.rank(:nav_order).all
   end
 
   def new

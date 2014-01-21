@@ -18,6 +18,7 @@ group :development, :test do
   gem 'guard-rspec', '4.2.4'
   gem 'growl', '1.0.3'
   gem 'factory_girl_rails', '~> 4.3.0'
+  gem 'jasmine-rails', '~> 0.5.4'
 end
 
 group :test do

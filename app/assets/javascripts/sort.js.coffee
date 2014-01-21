@@ -3,8 +3,12 @@ jQuery ->
   # this is a small hack; prevents width of objects during drag
   # from shrinking
   count = $("#sortable").children('li').length;
-  desired_width = $('.navbar').width() / count + 'px'
+  item_width = (width, count) ->
+    return width / count + "px"
+
+  desired_width = item_width($('.navbar').width(), count)
   $('#sortable li').css('width', desired_width)
+
 
   $('#sortable').sortable(
     axis: 'x'

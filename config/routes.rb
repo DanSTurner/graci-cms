@@ -1,4 +1,5 @@
 GraciCms::Application.routes.draw do
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   resources :posts do
     post :sort, on: :collection
     resources :comments
