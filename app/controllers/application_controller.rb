@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   private
 
     def set_navbar
-      @nav_items = Post.rank(:nav_order).all
+      @nav_items = Post.rank(:nav_order).where(include_in_nav: true)
     end
 end

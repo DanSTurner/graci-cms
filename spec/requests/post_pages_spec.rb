@@ -32,7 +32,11 @@ describe "Post Pages" do
         end
 
         describe "then commenting" do
-          before { click_link "title" }
+          before do
+            within("//h3") do
+              click_link "title"
+            end
+          end
 
           describe "with valid text" do
             before { fill_in "Content", with: "new comment" }
@@ -57,7 +61,9 @@ describe "Post Pages" do
 
         describe "after commenting" do
           before do
-            click_link "title"
+            within("//h3") do
+              click_link "title"
+            end
             fill_in "Content", with: "new comment"
             click_button "Submit comment"
           end

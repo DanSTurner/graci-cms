@@ -8,4 +8,5 @@ class Post < ActiveRecord::Base
 
   include RankedModel
   ranks :nav_order
+
 end

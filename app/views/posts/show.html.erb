@@ -1,29 +1,19 @@
-<h1>
-  <%= @post.title %>
-</h1>
-<div class="panel panel-default">
-  <div class="panel-body">
-    <%= @post.content %>
-    <div class="pull-right">
-      <%= link_to "edit", edit_post_path(@post), class: "btn btn-default btn-xs" %>
-      <%= link_to @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" do %>
-        <span class="glyphicon glyphicon-trash"></span>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render "shared/post" %>
 
-<h3>Comments</h3>
+<% unless @comments.empty? %>
+  <h3>Comments</h3>
 
-<ul class="list-group">
-  <% @comments.each do |comment| %>
-    <li class="list-group-item">
-      <%= comment.content %>
-      <%= link_to "delete", [@post, comment], method: :delete, data: { confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
+  <ul class="list-group">
+    <% @comments.each do |comment| %>
+      <li class="list-group-item">
+        <%= comment.content %>
+        <%= link_to "delete", [@post, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
+<br>
 <%= form_for [@post, @comment], html: {class: "form"} do |f| %>
   <div class="form-group">
     <%= f.label :content %>

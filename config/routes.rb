@@ -4,8 +4,9 @@ GraciCms::Application.routes.draw do
     post :sort, on: :collection
     resources :comments
   end
+  resources :static_pages
 
-  root 'posts#index'
+  root 'static_pages#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

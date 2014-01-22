@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    # @nav_items = Post.rank(:nav_order).all
   end
 
   def new
@@ -19,6 +18,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    if @post.save
+      @post.update_attribute :nav_order_position, Post.maximum("nav_order") + 100
+    end
     @post.save
     redirect_to posts_path
   end
@@ -45,7 +47,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :content, :nav_order)
+      params.require(:post).permit(:title, :content)
     end
 
     def set_post
