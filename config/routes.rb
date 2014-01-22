@@ -1,12 +1,14 @@
 GraciCms::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  resources :posts do
+
+  resources :posts, path: '/' do
     post :sort, on: :collection
+    get :all, on: :collection
     resources :comments
   end
-  resources :static_pages
 
-  root 'static_pages#index'
+  root 'posts#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

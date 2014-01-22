@@ -22,7 +22,7 @@ jQuery ->
         position = ui.item.index()
         $.ajax(
           type: 'POST'
-          url: '/posts/sort'
+          url: '/sort'
           dataType: 'json'
 
           # the :thing hash gets passed to @thing.attributes

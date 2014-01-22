@@ -9,6 +9,10 @@ class PostsController < ApplicationController
   end
 
   def index
+    @post = Post.rank(:nav_order).first
+  end
+
+  def all
     @posts = Post.all
   end
 
@@ -21,8 +25,11 @@ class PostsController < ApplicationController
     if @post.save
       @post.update_attribute :nav_order_position, Post.maximum("nav_order") + 100
     end
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render nothing: true
+    end
   end
 
   def edit

@@ -18,6 +18,18 @@ describe "Post Pages" do
         it { should have_content("title") }
         it { should have_content("lorem ipsum") }
 
+        describe "then adding a second post" do
+          before do
+            visit new_post_path
+            fill_in 'post_title', with: "title 2"
+            fill_in 'post_content', with: "content 2"
+            click_button "Submit"
+            visit root_url
+          end
+          it { should have_content("lorem ipsum") }
+          it { should_not have_content("content 2") }
+        end
+
         describe "then editing" do
           before { click_link "edit" }
           it { should have_content("Edit Post") }
@@ -32,11 +44,11 @@ describe "Post Pages" do
         end
 
         describe "then commenting" do
-          before do
-            within("//h3") do
-              click_link "title"
-            end
-          end
+          # before do
+          #   within("//h3") do
+          #     click_link "title"
+          #   end
+          # end
 
           describe "with valid text" do
             before { fill_in "Content", with: "new comment" }
@@ -61,9 +73,9 @@ describe "Post Pages" do
 
         describe "after commenting" do
           before do
-            within("//h3") do
-              click_link "title"
-            end
+            # within("//h3") do
+            #   click_link "title"
+            # end
             fill_in "Content", with: "new comment"
             click_button "Submit comment"
           end
