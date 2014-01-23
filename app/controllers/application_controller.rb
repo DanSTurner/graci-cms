@@ -4,10 +4,27 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_navbar
+  before_action :set_admin
 
   private
 
     def set_navbar
       @nav_items = Post.rank(:nav_order).where(include_in_nav: true)
+    end
+
+    def check_admin
+      unless @admin == true
+        redirect_to root_path, notice: 'Must be admin.'
+      end
+    end
+
+    def set_admin
+      current_user && current_user.admin == true ? @admin = true : @admin = false
+    end
+
+    def authorized_user
+      unless @admin == true || @user == current_user
+        redirect_to root_url, notice: 'You are not logged in or are logged in as the wrong user.'
+      end
     end
 end

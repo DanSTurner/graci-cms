@@ -4,11 +4,13 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <%= @post.content %>
-    <div class="pull-right">
-      <%= link_to "edit", edit_post_path(@post), class: "btn btn-default btn-xs" %>
-      <%= link_to @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" do %>
-        <span class="glyphicon glyphicon-trash"></span>
-      <% end %>
-    </div>
+    <% if @admin == true %>
+      <div class="pull-right">
+        <%= link_to "edit", edit_post_path(@post), class: "btn btn-default btn-xs" %>
+        <%= link_to @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

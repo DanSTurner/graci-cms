@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:index]
+  before_action :authorized_user, only: [:update, :destroy, :show, :edit]
 
   # GET /users
   def index
@@ -22,8 +24,11 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
+    unless User.first
+      @user.update_attribute(:admin, "true")
+    end
     if @user.save
+      auto_login(@user)
       redirect_to @user, notice: 'User was successfully created.'
     else
       render action: 'new'
