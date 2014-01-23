@@ -18,11 +18,12 @@ jQuery ->
       stop: (e, ui) ->
         ui.item.effect('highlight', {}, 1000)
       update: (e, ui) ->
+        update_url = $('#sortable').attr('update_url')
         item_id = ui.item.attr('data-post-id')
         position = ui.item.index()
         $.ajax(
           type: 'POST'
-          url: '/sort'
+          url: update_url
           dataType: 'json'
 
           # the :thing hash gets passed to @thing.attributes

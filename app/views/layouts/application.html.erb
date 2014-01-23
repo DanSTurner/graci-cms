@@ -11,6 +11,10 @@
 
   <div class="container">
     <%= render "shared/navbar" %>
+    <div>
+      <p id="notice"><%= flash[:notice] %></p>
+      <p id="alert"><%= flash[:alert] %></p>
+    </div>
     <%= yield %>
   </div>
 

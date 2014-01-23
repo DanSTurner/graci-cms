@@ -1,5 +1,7 @@
 <% unless @post.nil? %>
   <%= render "shared/post" %>
-  <%= link_to "Add comment", @post %>
+  <% if logged_in? %>
+    <%= link_to "Add comment", @post %>
+  <% end %>
   <%= link_to("#{pluralize @post.comments.length, "comment"}", @post) if @post.comments.length > 0 %>
 <% end %>

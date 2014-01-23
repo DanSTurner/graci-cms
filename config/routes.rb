@@ -1,13 +1,18 @@
 GraciCms::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+  resources :users
+  resources :user_sessions, only: [:new, :create, :destroy]
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'logout' => 'user_sessions#destroy', :as => :logout
 
-  resources :posts, path: '/' do
+  resources :posts do
     post :sort, on: :collection
     get :all, on: :collection
     resources :comments
   end
 
   root 'posts#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

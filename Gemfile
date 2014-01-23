@@ -11,6 +11,7 @@ gem 'figaro', '~> 0.7.0'
 gem 'friendly_id', '~> 5.0.2'
 gem 'jquery-ui-rails', '~> 4.1.1'
 gem 'ranked-model', '~> 0.3'
+gem 'sorcery', '~> 0.8.5'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
