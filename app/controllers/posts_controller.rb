@@ -10,6 +10,8 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.rank(:nav_order).first
+    @comment = @post.comments.build
+    @comments = @post.comments(true)
   end
 
   def all
@@ -54,7 +56,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :include_in_nav)
     end
 
     def set_post

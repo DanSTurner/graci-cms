@@ -51,7 +51,7 @@ describe "Post Pages" do
           # end
 
           describe "with valid text" do
-            before { fill_in "Content", with: "new comment" }
+            before { fill_in "Comment", with: "new comment" }
             it "should increase comment count" do
               expect { click_button "Submit comment" }.to change(Comment, :count).by(1)
             end
@@ -64,7 +64,7 @@ describe "Post Pages" do
             end
           end
           describe "with empty text" do
-            before { fill_in "Content", with: " " }
+            before { fill_in "Comment", with: " " }
             it "should not increase comment count" do
               expect { click_button "Submit comment" }.not_to change(Comment, :count).by(1)
             end
@@ -76,7 +76,7 @@ describe "Post Pages" do
             # within("//h3") do
             #   click_link "title"
             # end
-            fill_in "Content", with: "new comment"
+            fill_in "Comment", with: "new comment"
             click_button "Submit comment"
           end
           it { should have_content("new comment ") }

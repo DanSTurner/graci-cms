@@ -1,9 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <ul id="sortable" class="nav navbar-nav" update_url="<%= sort_posts_path %>" >
     <% @nav_items.each do |post| %>
-      <li data-post-id="<%= post.id %>" class="item">
-          <%= link_to post.title, post_path(post) %>
-      </li>
+      <% if post.include_in_nav? %>
+        <li data-post-id="<%= post.id %>" class="item">
+            <%= link_to post.title, post_path(post) %>
+        </li>
+      <% end %>
     <% end %>
     <li>
       <%= link_to new_post_path do %>

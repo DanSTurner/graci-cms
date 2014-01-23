@@ -1,7 +1,23 @@
-<% unless @post.nil? %>
-  <%= render "shared/post" %>
-  <% if logged_in? %>
-    <%= link_to "Add comment", @post %>
-  <% end %>
-  <%= link_to("#{pluralize @post.comments.length, "comment"}", @post) if @post.comments.length > 0 %>
+<%= render "shared/post" %>
+
+<% unless @comments.empty? %>
+  <h3>Comments</h3>
+
+  <ul class="list-group">
+    <% @comments.each do |comment| %>
+      <li class="list-group-item">
+        <%= comment.content %>
+        <%= link_to "delete", [@post, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br>
+<%= form_for [@post, @comment], html: {class: "form"} do |f| %>
+  <div class="form-group">
+    <%= f.label :content, "Comment" %>
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <%= f.submit "Submit comment", class: "btn btn-default" %>
 <% end %>

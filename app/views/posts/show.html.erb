@@ -16,7 +16,7 @@
 <br>
 <%= form_for [@post, @comment], html: {class: "form"} do |f| %>
   <div class="form-group">
-    <%= f.label :content %>
+    <%= f.label :content, "Comment" %>
     <%= f.text_field :content, class: "form-control" %>
   </div>
   <%= f.submit "Submit comment", class: "btn btn-default" %>

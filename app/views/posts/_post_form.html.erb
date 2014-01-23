@@ -7,5 +7,10 @@
     <%= f.label :content %>
     <%= f.text_area :content, class: "form-control" %>
   </div>
+  <div class="checkbox">
+    <%= f.label :include_in_nav do %>
+      <%= f.check_box :include_in_nav %> Include in navigation?
+    <% end %>
+  </div>
   <%= f.submit "Submit", class: "btn btn-default" %>
 <% end %>
