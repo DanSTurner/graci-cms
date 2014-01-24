@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     end
     if @user.save
       auto_login(@user)
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to root_url, notice: 'User was successfully created.'
     else
       render action: 'new'
     end
@@ -58,6 +58,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :username)
     end
 end
