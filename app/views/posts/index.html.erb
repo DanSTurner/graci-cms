@@ -7,7 +7,11 @@
     <% @comments.each do |comment| %>
       <li class="list-group-item">
         <%= comment.content %>
-        <%= link_to "delete", [@post, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+        <% if @admin == true %>
+          <%= link_to [@post, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs pull-right" do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        <% end %>
       </li>
     <% end %>
   </ul>
