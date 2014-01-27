@@ -12,5 +12,10 @@
       <%= f.check_box :include_in_nav %> Include in navigation?
     <% end %>
   </div>
+  <div class="checkbox">
+    <%= f.label :commentable do %>
+      <%= f.check_box :commentable %> Allow comments?
+    <% end %>
+  </div>
   <%= f.submit "Submit", class: "btn btn-default" %>
 <% end %>

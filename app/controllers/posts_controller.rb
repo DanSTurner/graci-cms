@@ -49,7 +49,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update_attributes(post_params)
-    redirect_to root_path, notice: 'Post edited successfully.'
+    redirect_to post_path(@post), notice: 'Post edited successfully.'
   end
 
   def destroy
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :content, :include_in_nav)
+      params.require(:post).permit(:title, :content, :include_in_nav, :commentable)
     end
 
     def set_post

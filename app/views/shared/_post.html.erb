@@ -1,6 +1,7 @@
 <h1>
   <%= @post.title %>
 </h1>
+
 <div class="panel panel-default">
   <div class="panel-body">
     <%= @post.content %>
@@ -14,3 +15,34 @@
     <% end %>
   </div>
 </div>
+<% unless @comments.empty? %>
+  <h2>Comments</h2>
+    <% @comments.each do |comment| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= comment.content %>
+          <% if @admin == true %>
+            <%= link_to [@post, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs pull-right" do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          by <%= comment.user.username %>, <%= time_ago_in_words(comment.created_at) %> ago
+        </div>
+      </div>
+    <% end %>
+<% end %>
+
+<br>
+<% if @post.commentable == true %>
+  <%= form_for [@post, @comment], html: {class: "form"} do |f| %>
+    <div class="form-group">
+      <%= f.label :content, "Comment" %>
+      <%= f.text_field :content, class: "form-control" %>
+    </div>
+    <%= f.submit "Submit comment", class: "btn btn-default" %>
+  <% end %>
+<% elsif @post.commentable == false && @comments.any? %>
+  <em>Comments are now closed</em>
+<% end %>

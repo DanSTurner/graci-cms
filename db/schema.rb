@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124220135) do
+ActiveRecord::Schema.define(version: 20140127181515) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140124220135) do
     t.string   "slug"
     t.integer  "nav_order",                  default: 0
     t.boolean  "include_in_nav",             default: true
+    t.boolean  "commentable",                default: true
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug"
